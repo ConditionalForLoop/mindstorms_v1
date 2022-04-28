@@ -1,0 +1,16 @@
+%%sim_magic_preloaded -pRCO -x 500 -y 700
+
+gyro = GyroSensor(INPUT_4)
+SPEED = SpeedPercent(40)
+
+
+
+tank_drive.on_for_rotations(SPEED, SPEED, 4)
+tank_drive.on(SpeedPercent(0), SpeedPercent(40))
+while gyro.angle>-269:
+    print(str(gyro.angle))
+    pass
+
+tank_drive.on_for_rotations(SPEED, SPEED, 4)
+        
+
