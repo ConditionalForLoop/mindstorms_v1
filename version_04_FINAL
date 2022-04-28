@@ -1,0 +1,27 @@
+%%sim_magic_preloaded -pRCO -x 500 -y 700
+
+#Set CONSTANTS and variables
+gyro = GyroSensor(INPUT_4)
+SPEED = SpeedPercent(15)
+tank_steering = MoveSteering(OUTPUT_B, OUTPUT_C)
+D = -40 #ROTATION DIRECTION
+V = 15 #ROTATION VELOCITY
+x = -270 #variable angle of rotation
+
+
+#Create loop
+#Drive fwd, turn according to gyro reading
+#Print gyro reading to screen
+#Decrement gyro value
+for i in range(4):
+    tank_drive.on_for_rotations(SPEED, SPEED, 5)
+    while gyro.angle>=x:
+        tank_steering.on(D, V)
+        print(str(gyro.angle))
+    x-=269
+    
+    
+#Notes
+#tank_steering.on(DIRECTION, SPEED)
+#angles-270, -540, -810, -1080
+#x value of 269 for correction // tested OK
