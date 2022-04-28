@@ -1,0 +1,16 @@
+%%sim_magic_preloaded -p
+
+gyro = GyroSensor(INPUT_4)
+
+say('Turn one way')
+tank_drive.on(SpeedPercent(20), SpeedPercent(0))
+while gyro.angle < 90:
+    print('Gyro: '+str(gyro.angle))
+    
+say('and the other')
+# Turn the other way
+tank_drive.on(SpeedPercent(0), SpeedPercent(20))
+while gyro.angle > 0:
+    print('Gyro: '+str(gyro.angle))
+
+say('all done')
