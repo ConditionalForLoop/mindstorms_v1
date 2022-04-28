@@ -1,0 +1,26 @@
+#---- sim_magic_preloaded BOILERPLATE ----
+
+from ev3dev2.motor import MoveTank, MoveSteering, SpeedPercent, OUTPUT_B, OUTPUT_C
+from ev3dev2.sensor import INPUT_1, INPUT_2, INPUT_3, INPUT_4
+from ev3dev2.sensor.lego import ColorSensor, GyroSensor, UltrasonicSensor
+from ev3dev2.sound import Sound
+
+from ev3dev2_glue import get_clock
+
+speaker = Sound()
+def say(txt, wait=False, show=True):
+    """Say and optionally show a phrase."""
+    if show:
+        print(txt)
+    # `wait` controls blocking behaviour
+    speaker.speak(txt, play_type=int(not wait))
+
+tank_turn = MoveSteering(OUTPUT_B, OUTPUT_C)
+tank_drive = MoveTank(OUTPUT_B, OUTPUT_C)
+
+ultrasonic = UltrasonicSensor(INPUT_1)
+colorLeft = ColorSensor(INPUT_2)
+colorRight = ColorSensor(INPUT_3)
+gyro = GyroSensor(INPUT_4)
+
+# ----- YOUR CODE BELOW HERE -----
